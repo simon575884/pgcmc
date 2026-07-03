@@ -1,7 +1,7 @@
 'use client'
 
 import { useEffect, useState } from 'react'
-import { Gamepad2, Menu, X, ArrowUpRight } from 'lucide-react'
+import { Menu, X, ArrowUpRight } from 'lucide-react'
 import { cn } from '@/lib/utils'
 import { DISCORD_INVITE } from '@/lib/site'
 
@@ -34,10 +34,12 @@ export function SiteHeader() {
       )}
     >
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between gap-4 px-4 md:h-20 md:px-6">
-        <a href="#home" className="flex items-center gap-3">
-          <span className="flex size-10 items-center justify-center rounded-md border border-primary/40 bg-primary/15 text-primary">
-            <Gamepad2 className="size-5" />
-          </span>
+        <a href="#home" className="flex items-center gap-3 transition-transform hover:scale-105">
+          <img
+            src="/images/pgc-logo.png"
+            alt="PGC Logo"
+            className="h-10 w-10 rounded-md"
+          />
           <span className="flex flex-col leading-none">
             <span className="font-heading text-xl tracking-wide text-foreground">
               PGC

@@ -20,10 +20,37 @@ const geistMono = Geist_Mono({
 })
 
 export const metadata: Metadata = {
-  title: 'Pakistan Gamers Community — Tournaments, Lifesteal SMP & More',
+  title: 'PGC | Pakistan Gamers Community — Minecraft Tournaments & LifeSteal SMP',
   description:
-    "Pakistan's home for competitive gaming. Join thousands of gamers in tournaments, the Warrior Lifesteal SMP, exclusive events, giveaways, and a community that never logs off.",
+    "Pakistan's largest gaming community. Join our exclusive Minecraft LifeSteal SMP, esports tournaments, events, and connect with thousands of competitive gamers.",
   generator: 'v0.app',
+  keywords: 'Minecraft, Pakistan, gaming, SMP, LifeSteal, tournament, PGC, gamers',
+  authors: [{ name: 'PGC Team' }],
+  creator: 'Pakistan Gamers Community',
+  openGraph: {
+    type: 'website',
+    locale: 'en_PK',
+    url: 'https://pgcmc.fun',
+    title: 'PGC | Pakistan Gamers Community',
+    description: 'Join Pakistan\'s largest gaming community. Minecraft tournaments, LifeSteal SMP, and exclusive events.',
+    images: [
+      {
+        url: '/images/pgc-logo.png',
+        width: 512,
+        height: 512,
+        alt: 'PGC Logo',
+      },
+    ],
+  },
+  twitter: {
+    card: 'summary_large_image',
+    title: 'PGC | Pakistan Gamers Community',
+    description: 'Pakistan\'s home for Minecraft tournaments and LifeSteal SMP',
+    images: ['/images/pgc-logo.png'],
+  },
+  icons: {
+    icon: '/favicon.png',
+  },
 }
 
 export const viewport: Viewport = {

@@ -30,22 +30,41 @@ function Unit({ value, label }: { value: number; label: string }) {
   )
 }
 
-export function Countdown({ targetDays = 4 }: { targetDays?: number }) {
-  // Fixed target relative to first client render to avoid hydration drift.
-  const target = useMemo(
-    () => Date.now() + targetDays * 86_400_000 + 5 * 3_600_000 + 33 * 60_000,
-    [targetDays],
-  )
+function calculateNextSundayPKT(): number {
+  const now = new Date()
+  // Convert to PKT time
+  const pktTime = new Date(now.toLocaleString('en-US', { timeZone: 'Asia/Karachi' }))
+  
+  let nextSunday = new Date(pktTime)
+  const currentDay = nextSunday.getDay()
+  const daysUntilSunday = (7 - currentDay) % 7
+  
+  if (daysUntilSunday === 0) {
+    const sundayEight = new Date(nextSunday)
+    sundayEight.setHours(20, 0, 0, 0)
+    if (pktTime > sundayEight) {
+      nextSunday.setDate(nextSunday.getDate() + 7)
+    }
+  } else {
+    nextSunday.setDate(nextSunday.getDate() + daysUntilSunday)
+  }
+  
+  nextSunday.setHours(20, 0, 0, 0)
+  return nextSunday.getTime()
+}
+
+export function Countdown() {
+  const target = useMemo(() => calculateNextSundayPKT(), [])
   const { days, hours, minutes, seconds } = useCountdown(target)
 
   return (
     <div className="flex items-center gap-2">
       <Unit value={days} label="DAYS" />
-      <span className="pb-5 font-heading text-2xl text-primary">:</span>
+      <span className="pb-5 font-heading text-2xl text-primary animate-pulse">:</span>
       <Unit value={hours} label="HRS" />
-      <span className="pb-5 font-heading text-2xl text-primary">:</span>
+      <span className="pb-5 font-heading text-2xl text-primary animate-pulse">:</span>
       <Unit value={minutes} label="MIN" />
-      <span className="pb-5 font-heading text-2xl text-primary">:</span>
+      <span className="pb-5 font-heading text-2xl text-primary animate-pulse">:</span>
       <Unit value={seconds} label="SEC" />
     </div>
   )

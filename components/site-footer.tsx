@@ -1,4 +1,4 @@
-import { Gamepad2, Heart } from 'lucide-react'
+import { Heart, Play } from 'lucide-react'
 
 const COLUMNS = [
   {
@@ -22,9 +22,11 @@ export function SiteFooter() {
         <div className="grid gap-10 md:grid-cols-[1.4fr_1fr_1fr_1fr]">
           <div>
             <a href="#home" className="flex items-center gap-3">
-              <span className="flex size-10 items-center justify-center rounded-md border border-primary/40 bg-primary/15 text-primary">
-                <Gamepad2 className="size-5" />
-              </span>
+              <img
+                src="/images/pgc-logo.png"
+                alt="PGC Logo"
+                className="h-10 w-10 rounded-md"
+              />
               <span className="flex flex-col leading-none">
                 <span className="font-heading text-xl tracking-wide text-foreground">
                   PGC
@@ -38,6 +40,17 @@ export function SiteFooter() {
               Pakistan&apos;s home for competitive gaming, Minecraft, and a
               community that never logs off.
             </p>
+            <div className="mt-4 flex gap-3">
+              <a
+                href="https://www.youtube.com/@BlueTickReloaded"
+                target="_blank"
+                rel="noopener noreferrer"
+                aria-label="YouTube"
+                className="flex size-10 items-center justify-center rounded-md border border-border bg-card text-muted-foreground transition-colors hover:bg-red-600 hover:text-white"
+              >
+                <Play className="size-5 fill-current" />
+              </a>
+            </div>
           </div>
 
           {COLUMNS.map((col) => (

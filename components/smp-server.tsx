@@ -4,6 +4,7 @@ import { useState } from 'react'
 import { Heart, Swords, Box, Home, RefreshCw, Copy, Check } from 'lucide-react'
 import { SectionHeading } from '@/components/section-heading'
 import { Reveal } from '@/components/reveal'
+import { LiveServerStatus } from '@/components/live-server-status'
 
 const FEATURES = [
   { icon: Heart, title: 'Steal Hearts', desc: 'Defeat players, gain power' },
@@ -56,10 +57,12 @@ export function SmpServer() {
               description="Every fight matters. Every heart counts. Build your legacy in Pakistan's most competitive crossplay survival world."
             />
 
-            <div className="mt-8 flex flex-wrap gap-6">
-              <LiveStat value="4" label="Players online" pulse />
-              <LiveStat value="249ms" label="Avg ping" />
-              <LiveStat value="1.20+" label="Version" />
+            <div className="mt-8 space-y-4">
+              <LiveServerStatus />
+              <div className="flex flex-wrap gap-6">
+                <LiveStat value="249ms" label="Avg ping" />
+                <LiveStat value="1.20+" label="Version" />
+              </div>
             </div>
           </div>
 
@@ -91,14 +94,6 @@ export function SmpServer() {
                 </p>
                 <p className="truncate font-mono text-lg font-bold text-foreground">
                   play.pgcmc.fun
-                </p>
-              </div>
-              <div className="hidden text-right sm:block">
-                <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
-                  Port
-                </p>
-                <p className="font-mono text-lg font-bold text-foreground">
-                  {edition === 'java' ? '25568' : '19132'}
                 </p>
               </div>
               <button
